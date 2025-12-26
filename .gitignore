@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Output files
+*.csv
+proposals.json
+proposals.tf
+results.csv
+analysis_results.csv
+lifecycle_proposals.tf
+
+# OS
+.DS_Store
+Thumbs.db
+
