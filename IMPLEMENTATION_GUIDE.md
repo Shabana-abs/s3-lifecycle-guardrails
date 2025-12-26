@@ -134,12 +134,22 @@ module "my_bucket" {
 
 ## Key Implementation Details
 
+### ⚠️ CRITICAL REQUIREMENT: `noncurrent_expiration_days` is REQUIRED
+
+**You MUST set `noncurrent_expiration_days` for `remove_expired_object_delete_markers` to work!**
+
+- Delete markers are only removed when their associated non-current versions expire
+- Without `noncurrent_expiration_days`, the delete marker removal rule will NOT work
+- This is an AWS requirement: delete markers expire when their non-current versions expire
+- **Every example below includes `noncurrent_expiration_days` - do not skip this setting!**
+
 ### Important Notes
 
-1. **`expired_object_delete_marker` requires `noncurrent_expiration_days`**
+1. **`expired_object_delete_marker` requires `noncurrent_expiration_days`** ⚠️ REQUIRED
    - Delete markers are only removed when non-current versions expire
    - You MUST set `noncurrent_expiration_days` for this to work
    - See AWS docs: delete markers are removed when their associated non-current versions expire
+   - **Minimum value:** Set to a reasonable retention period (e.g., 30, 60, 90 days)
 
 2. **Cannot combine with `expiration_days`**
    - If `expiration_days` is set, you cannot use `remove_expired_object_delete_markers` in blob manifests
@@ -192,14 +202,18 @@ Review the generated proposals to understand which buckets need changes.
    ```yaml
    input:
      versioning: true
-     noncurrent_expiration_days: <number>  # e.g., 30
+     noncurrent_expiration_days: <number>  # REQUIRED! e.g., 30 (days)
      remove_expired_object_delete_markers: true
    ```
+   
+   **⚠️ IMPORTANT:** Both `noncurrent_expiration_days` AND `remove_expired_object_delete_markers` must be set together!
 
 **For Direct Terraform:**
 1. Find the bucket's configuration file (`.hcl` or `main.tf`)
 2. Add lifecycle rule configuration (see examples above)
-3. Ensure `noncurrent_expiration_days` is set
+3. **REQUIRED:** Ensure `noncurrent_expiration_days` is set in the lifecycle rule or as a module variable
+   - In lifecycle rules: Set `noncurrent_version_expiration.noncurrent_days`
+   - In module variables: Set `noncurrent_expiration_days`
 
 ### Step 5: Deploy
 - For Pacman: Deploy via normal Pacman workflow
