@@ -2,6 +2,8 @@
 
 Tools to identify and manage S3 buckets with high delete marker counts, and propose lifecycle rules to clean them up.
 
+> ⚠️ **IMPORTANT:** See [`CODE_FREEZE_NOTES.md`](CODE_FREEZE_NOTES.md) for important implementation notes and code freeze information.
+
 ## Overview
 
 This repository contains scripts to:
@@ -230,4 +232,9 @@ This project is provided as-is for internal use.
 - [AWS S3 Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html)
 - [S3 Delete Markers](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeleteMarker.html)
 - [S3 Object Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+
+## Important Documents
+
+- **[CODE_FREEZE_NOTES.md](CODE_FREEZE_NOTES.md)** - ⚠️ **READ THIS FIRST** - Code freeze notes, implementation checklist, and key requirements
+- **[IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)** - Detailed guide on which files to modify for implementation
 
