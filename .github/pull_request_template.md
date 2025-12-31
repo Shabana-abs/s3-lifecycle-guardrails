@@ -41,21 +41,33 @@ additional_custom_lifecycle_rules = [
 ]
 ```
 
-**Key Requirement:** `noncurrent_expiration_days` MUST be set for this to work. Delete markers are only removed when their associated non-current versions expire.
+**Important Note:** While S3 supports removing expired delete markers independently, this rule is most effective when paired with a non-current version expiration policy.
+
+Without expiring non-current versions, delete markers may persist indefinitely. This proposal therefore recommends configuring `noncurrent_expiration_days` alongside delete marker cleanup to ensure predictable behavior.
+
+## Safety Guarantees
+
+- ✅ This rule does not delete current object versions
+- ✅ This rule does not remove non-current versions before the configured retention period
+- ✅ This rule only removes delete markers after associated object versions have expired
+- ✅ Buckets with Object Lock are explicitly excluded
+- ✅ No manual deletions are performed; cleanup is handled entirely by S3 lifecycle
 
 ## Impact Analysis
 
 ### Benefits
-- ✅ **Cost Reduction:** Reduces storage costs by cleaning up unnecessary delete markers
+- ✅ **Cost & Metadata Reduction:** Reduces object count, metadata overhead, and associated storage/listing costs
 - ✅ **Performance:** Improves bucket operation performance (list, version queries)
 - ✅ **Operational:** Simplifies bucket management and reduces clutter
 - ✅ **Automated:** No manual intervention needed once configured
 
+**Note:** Delete marker cleanup occurs gradually as lifecycle rules run and eligible markers expire; no bulk deletions occur.
+
 ### Risks & Considerations
-- ⚠️ **Non-Current Version Expiration:** Requires setting `noncurrent_expiration_days`, which means old versions will be deleted
-- ⚠️ **Cannot Combine:** Cannot use `remove_expired_object_delete_markers` if `expiration_days` is set (Terraform limitation)
+- ⚠️ **Non-Current Version Retention:** This proposal introduces a defined retention window for non-current object versions. The retention duration (e.g., 30 / 60 / 90 days) should be reviewed and approved per bucket class.
+- ⚠️ **Terraform Constraint:** In Terraform, `expired_object_delete_marker` cannot be defined in the same lifecycle rule as `expiration.days`. This proposal uses a dedicated lifecycle rule to avoid configuration conflicts.
 - ⚠️ **Object Lock Exclusion:** Buckets with Object Lock cannot use this (automatically excluded)
-- ⚠️ **Gradual Cleanup:** Delete markers are removed gradually as non-current versions expire
+- ⚠️ **Gradual Cleanup:** Delete marker cleanup occurs gradually as lifecycle rules run and eligible markers expire; no bulk deletions occur.
 
 ## Analysis Tools Created
 
@@ -76,6 +88,7 @@ Tools have been created to identify buckets needing this change:
 - [ ] Determine appropriate `noncurrent_expiration_days` value (30, 60, 90 days?)
 - [ ] Identify any buckets that should be excluded
 - [ ] Approve implementation approach
+- [ ] **Changes will not be applied org-wide without Cloud review and explicit bucket-level approval**
 
 ### Phase 3: Implementation (After Approval)
 - [ ] Run analysis script to identify buckets needing changes
@@ -145,4 +158,7 @@ Tools have been created to identify buckets needing this change:
 - **Code Freeze Ends:** ~January 10, 2025 (15 days)
 - **Review Period:** After code freeze
 - **Implementation:** After approval and code freeze completion
+
+
+
 
