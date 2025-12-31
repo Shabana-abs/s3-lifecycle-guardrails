@@ -19,13 +19,13 @@ Enable lifecycle rules to automatically remove expired delete markers for versio
 # For Pacman/Blob components
 input:
   versioning: true
-  noncurrent_expiration_days: 30  # REQUIRED - Delete markers expire when non-current versions expire
+  noncurrent_expiration_days: 30  # Recommended - Ensures delete markers expire predictably
   remove_expired_object_delete_markers: true
 ```
 
 ```hcl
 # For Terraform modules
-noncurrent_expiration_days = 30  # REQUIRED
+noncurrent_expiration_days = 30  # Recommended - Ensures delete markers expire predictably
 
 additional_custom_lifecycle_rules = [
   {
@@ -35,7 +35,7 @@ additional_custom_lifecycle_rules = [
       expired_object_delete_marker = true
     }
     noncurrent_version_expiration = {
-      noncurrent_days = 30  # REQUIRED
+      noncurrent_days = 30  # Recommended - Ensures delete markers expire predictably
     }
   }
 ]
