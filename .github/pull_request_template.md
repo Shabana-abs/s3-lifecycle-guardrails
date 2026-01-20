@@ -81,7 +81,7 @@ Tools have been created to identify buckets needing this change:
 ### Phase 1: Analysis (Ready)
 - ✅ Tools created to identify buckets
 - ✅ Documentation prepared
-- ⏳ Run analysis on production buckets (after code freeze)
+- ⏳ Run analysis on production buckets
 
 ### Phase 2: Review & Approval (Pending)
 - [ ] Cloud Team reviews this proposal
@@ -119,7 +119,7 @@ Tools have been created to identify buckets needing this change:
    - How do we verify the rules are working?
 
 5. **Timeline:**
-   - When can we start implementation (after code freeze)?
+   - When can we start implementation?
    - Any deadlines or priorities?
 
 ## Files That Will Need Changes
@@ -155,9 +155,9 @@ Tools have been created to identify buckets needing this change:
 ## Timeline
 
 - **Created:** December 26, 2024
-- **Code Freeze Ends:** ~January 10, 2025 (15 days)
-- **Review Period:** After code freeze
-- **Implementation:** After approval and code freeze completion
+- **Soji Approved:** [Date]
+- **Status:** Ready for Cloud Team review and implementation
+- **Implementation:** After Cloud Team approval
 
 
 

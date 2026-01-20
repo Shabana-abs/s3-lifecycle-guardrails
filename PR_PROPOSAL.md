@@ -4,7 +4,7 @@
 
 **Proposal:** Enable lifecycle rules to automatically remove expired delete markers in versioned S3 buckets to reduce storage costs and improve bucket performance.
 
-**Status:** Ready for review (pending code freeze completion)  
+**Status:** Ready for Cloud Team review  
 **Priority:** Medium  
 **Impact:** Cost optimization and operational improvement
 
@@ -105,7 +105,7 @@ Tools have been created to identify buckets needing this change:
 ### Phase 1: Analysis (Ready)
 - ✅ Tools created to identify buckets
 - ✅ Documentation prepared
-- ⏳ Run analysis on production buckets (after code freeze)
+- ⏳ Run analysis on production buckets
 
 ### Phase 2: Review & Approval (Pending)
 - [ ] Cloud Team reviews this proposal
@@ -150,7 +150,7 @@ Tools have been created to identify buckets needing this change:
    - How do we verify the rules are working?
 
 5. **Timeline:**
-   - When can we start implementation (after code freeze)?
+   - When can we start implementation?
    - Any deadlines or priorities?
 
 ---
@@ -196,9 +196,9 @@ Before implementation:
 ## 📅 Timeline
 
 - **Created:** December 26, 2024
-- **Code Freeze Ends:** ~January 10, 2025 (15 days)
-- **Review Period:** After code freeze
-- **Implementation:** After approval and code freeze completion
+- **Soji Approved:** [Date]
+- **Status:** Ready for Cloud Team review
+- **Implementation:** After Cloud Team approval
 
 ---
 
@@ -207,10 +207,15 @@ Before implementation:
 1. **Cloud Team Review:** Please review this proposal and provide feedback
 2. **Answer Questions:** Address the questions above
 3. **Approve Approach:** Confirm implementation approach
-4. **Schedule Implementation:** Plan implementation after code freeze
+4. **Schedule Implementation:** Plan implementation timeline
 
 ---
 
 **Contact:** [Your Name/Team]  
 **Repository:** https://github.com/Shabana-abs/s3-lifecycle-guardrails
+
+
+
+
+
 

@@ -207,3 +207,12 @@ aws s3api get-bucket-lifecycle-configuration --bucket abnormal-security-siem-log
 3. Test with `aws sts get-caller-identity`
 4. Use the S3 lifecycle guardrails scripts
 
+
+
+
+
+
+
+
+
+

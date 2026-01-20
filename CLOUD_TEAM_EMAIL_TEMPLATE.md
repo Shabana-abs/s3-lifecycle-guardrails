@@ -34,7 +34,7 @@ Enable the "Remove expired delete markers" lifecycle rule for versioned buckets 
 
 ## Next Steps
 - Review the proposal: See `PR_PROPOSAL.md` in the repository
-- After code freeze ends (~Jan 10), I can run the analysis and share results
+- I can run the analysis and share results with you
 - Then we can discuss implementation approach
 
 Please let me know if you'd like to discuss this further or if you have any questions.
@@ -49,4 +49,9 @@ Thanks!
 - Repository: https://github.com/Shabana-abs/s3-lifecycle-guardrails
 - PR Proposal: [PR_PROPOSAL.md](PR_PROPOSAL.md)
 - Implementation Guide: [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)
+
+
+
+
+
 
